@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soapenv:Body>
+<RetrieveInternalContentResponse xmlns="urn:vim25"><returnval><agentManager type="AgentManager">ha-agentmgr</agentManager><llProvisioningManager type="HostLowLevelProvisioningManager">ha-llpm</llProvisioningManager><diskManager type="HostDiskManager">ha-blklist-service</diskManager><nfcService type="NfcService">ha-nfc-service</nfcService><proxyService type="ProxyService">ha-proxy-service</proxyService><serviceManager type="ServiceManager">ha-servicemanager</serviceManager><ftManager type="HostFaultToleranceManager">ha-ftmgr</ftManager><hostDistributedVirtualSwitchManager type="HostDistributedVirtualSwitchManager">ha-hostdvsmanager</hostDistributedVirtualSwitchManager><tpmManager type="HostTpmManager">ha-tpmmgr</tpmManager><internalStatsCollector type="InternalStatsCollector">ha-internal-stats-collector</internalStatsCollector><hbrManager type="HbrManager">ha-hbr-manager</hbrManager><drsStatsManager type="DrsStatsManager">ha-drs-stats-manager</drsStatsManager><cbrcManager type="CbrcManager">ha-cbrc-manager</cbrcManager><hostProfileEngine><hostProfileManager type="ProfileHostProfileEngineHostProfileManager">ha-hostprofileengine-hostprofilemanager</hostProfileManager><hostComplianceManager type="ProfileHostProfileEngineComplianceManager">ha-hostprofileengine-compliancemanager</hostComplianceManager></hostProfileEngine><vmciAccessManager type="HostVmciAccessManager">ha-vmci-access-manager</vmciAccessManager></returnval></RetrieveInternalContentResponse>
+</soapenv:Body>
+</soapenv:Envelope>

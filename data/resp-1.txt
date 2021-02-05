@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf8">
+<script type="text/javascript" src="./default.js"></script>
+<script type="text/javascript" src="./en/welcomeRes.js"></script>
+<script type="text/javascript" src="./watermark.js"></script>
+<script type="text/javascript" src="./dyndata.js"></script>
+<script type="text/javascript">document.write("<title>" + ID_EESX_Welcome + "</title>");</script>
+
+<link rel="stylesheet" href="./default.css" type="text/css" />
+<link rel="stylesheet" href="./print.css" type="text/css" media="print" />
+
+<meta name="description" content="VMware ESXi is virtual infrastructure software for partitioning, consolidating, and managing systems in mission-critical environments. VMware ESXi provides a highly scalable virtual machine platform with advanced resource management capabilities, which can be managed by VMware vCenter Server.">
+</head>
+
+<body>
+<div id="main">
+
+   <div id="header">
+      <h1><script type="text/javascript">document.write(ID_EESX);</script></h1>
+      <h2><script type="text/javascript">document.write(ID_Welcome);</script></h2>
+   </div>
+
+   <div id="body">
+      <div id="content">
+         <h3><script type="text/javascript">document.write(ID_GettingStarted);</script></h3>
+
+         <p><script type="text/javascript">document.write(ID_ESX_VIClientDesc);</script></p>
+
+         <ul>
+            <li><script type="text/javascript">
+               document.write('<a href="http://vsphereclient.vmware.com/vsphereclient/VMware-viclient-all-6.0.0.exe">' + ID_DownloadHClientWin + '</a>');
+            </script></li>
+            <li><script type="text/javascript">
+               document.write('<a href="/ui/">' + ID_OpenEHC + '</a>');
+            </script></li>
+         </ul>
+
+         <script type="text/javascript">
+            var c = ID_ESX_VCServerDesc;
+            var u = 'http://www.vmware.com/info?id=1125';
+            var t = ID_DownloadVCServer;
+
+            if (null != ID_OemVcLink[ID_ResourceLang]) {
+               if (ID_OemVcLink[ID_ResourceLang].url.length > 0) {
+                  u = ID_OemVcLink[ID_ResourceLang].url;
+               }
+
+               if (ID_OemVcLink[ID_ResourceLang].context.length > 0) {
+                  c = ID_OemVcLink[ID_ResourceLang].context;
+               }
+
+               if (ID_OemVcLink[ID_ResourceLang].text.length > 0) {
+                  t = ID_OemVcLink[ID_ResourceLang].text;
+               }
+            }
+
+            document.write('<p>' + c + '</p>');
+            document.write('<ul><li><a href="' + u + '">' + t + '</a></li></ul>');
+         </script>
+
+         <p><script type="text/javascript">document.write(ID_DocDesc);</script></p>
+
+         <ul>
+            <li><a href="http://www.vmware.com/info?id=1272"><script type="text/javascript">document.write(ID_DownloadDoc);</script></a></li>
+         </ul>
+
+         <script type="text/javascript">
+            if (null != ID_OemLink[ID_ResourceLang]) {
+               document.write('<p>' + ID_OemLink[ID_ResourceLang].context + '</p>');
+               document.write('<ul><li><a href="' + ID_OemLink[ID_ResourceLang].url + '">'+ ID_OemLink[ID_ResourceLang].text +'</a></li></ul>');
+            }
+         </script>
+      </div>
+   </div>
+
+   <hr class="hide" />
+
+   <div id="sidebar">
+      <h3><script type="text/javascript">document.write(ID_ForAdmins);</script></h3>
+
+      <h4><script type="text/javascript">document.write(ID_VIRCLI);</script></h4>
+
+      <p><script type="text/javascript">document.write(ID_VIRCLIDesc);</script></p>
+
+      <ul>
+         <li><script type="text/javascript">document.write('<a href="https://www.vmware.com/support/developer/vcli/">'+ ID_DownloadVIRCLIAppliance +'</a>');</script></li>
+         <li><script type="text/javascript">document.write('<a href="https://www.vmware.com/support/developer/vcli/">'+ ID_DownloadVIRCLIWindows +'</a>');</script></li>
+         <li><script type="text/javascript">document.write('<a href="https://www.vmware.com/support/developer/vcli/">'+ ID_DownloadVIRCLILinux +'</a>');</script></li>
+      </ul>
+
+      <h4><script type="text/javascript">document.write(ID_VIDatacenters);</script></h4>
+
+      <p><script type="text/javascript">document.write(ID_VIDatacentersDesc);</script></p>
+
+      <ul>
+         <li><script type="text/javascript">document.write('<a href="/folder?dcPath=ha-datacenter">'+ ID_BrowseHostDatastores +'</a>');</script></li>
+      </ul>
+
+      <h3><script type="text/javascript">document.write(ID_ForDevs);</script></h3>
+
+      <h4><script type="text/javascript">document.write(ID_VISDK);</script></h4>
+
+      <p><script type="text/javascript">document.write(ID_VISDKDesc);</script></p>
+
+      <ul>
+         <li><script type="text/javascript">document.write('<a href="http://www.vmware.com/info?id=928">'+ ID_DownloadSDK +'</a>');</script></li>
+         <li><script type="text/javascript">document.write('<a href="/mob/">'+ ID_BrowseHost +'</a>');</script></li>
+      </ul>
+   </div>
+
+   <hr class="hide" />
+
+   <div id="footer">
+      <p><script type="text/javascript">document.write(ID_CopyrightText);</script></p>
+
+      <p><script type="text/javascript">document.write(ID_TrademarkText);</script></p>
+
+      <p><script type="text/javascript">document.write(ID_AboutOSSDesc);</script></p>
+   </div>
+</div>
+&nbsp;
+</body>
+</html>

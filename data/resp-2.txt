@@ -1,0 +1,11 @@
+<ConfigRoot>
+  <clientConnection id="0000">
+    <authdPort>902</authdPort>
+    <version>6</version>
+    <exactVersion>6.0.0</exactVersion>
+    <patchVersion>1.0.0</patchVersion>
+    <apiVersion>dev</apiVersion>
+    <downloadUrl>http://vsphereclient.vmware.com/vsphereclient/VMware-viclient-all-6.0.0.exe</downloadUrl>
+    <flexClientVersion>6.0.0</flexClientVersion>
+  </clientConnection>
+</ConfigRoot>
