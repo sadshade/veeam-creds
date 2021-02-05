@@ -1,5 +1,5 @@
 # Veeampot
-Python script to emulate vSsphere responses to retrieve stored credentials from Veeam
+Python script to emulate vSphere responses to retrieve stored credentials from Veeam
 
 ## Usage
 1. Run the script ./veeampot.py
