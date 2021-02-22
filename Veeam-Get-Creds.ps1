@@ -14,18 +14,16 @@ Add-Type -assembly System.Security
 #Searching for connection parameters in the registry
 try {
 	$VeaamRegPath = "HKLM:\SOFTWARE\Veeam\Veeam Backup and Replication\"
-	$SqlDatabaseName = (Get-ItemProperty -Path $VeaamRegPath).SqlDatabaseName
-	$SqlInstanceName = (Get-ItemProperty -Path $VeaamRegPath).SqlInstanceName
-	$SqlServerName = (Get-ItemProperty -Path $VeaamRegPath).SqlServerName
+	$SqlDatabaseName = (Get-ItemProperty -Path $VeaamRegPath -ErrorAction Stop).SqlDatabaseName 
+	$SqlInstanceName = (Get-ItemProperty -Path $VeaamRegPath -ErrorAction Stop).SqlInstanceName
+	$SqlServerName = (Get-ItemProperty -Path $VeaamRegPath -ErrorAction Stop).SqlServerName
 }
 catch {
 	echo "Can't find Veeam on localhost, try running as Administrator"
-	exit
+	exit -1
 }
-finally {
-	"Found Veeam DB on "+$SqlServerName+"\"+$SqlInstanceName+
-		"@"+$SqlDatabaseName+" connecting..."
-}
+
+"Found Veeam DB on "+$SqlServerName+"\"+$SqlInstanceName+"@"+$SqlDatabaseName+" connecting..."
 
 #Forming the connection string
 $SQL = "SELECT [user_name],[password] FROM [$SqlDatabaseName].[dbo].[Credentials] "+
@@ -46,7 +44,7 @@ try {
 }
 catch {
 	"Can't connect to DB, exit."
-	exit
+	exit -1
 }
 
 $rows=($dataset.Tables | Select-Object -Expand Rows)
