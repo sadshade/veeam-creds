@@ -1,4 +1,4 @@
-# Veeampot
+# Veeam Credential Recovery
 Python script to emulate vSphere responses to retrieve stored credentials from Veeam
 
 ## Usage
