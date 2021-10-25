@@ -24,7 +24,7 @@ catch {
 }
 
 ""
-Write-Host "Found Veeam DB on "+$SqlServerName+"\"+$SqlInstanceName+"@"+$SqlDatabaseName+" connecting...  " -NoNewLine
+Write-Host "Found Veeam DB on "$SqlServerName"\"$SqlInstanceName"@"$SqlDatabaseName" connecting...  " -NoNewLine
 
 #Forming the connection string
 $SQL = "SELECT [user_name],[password] FROM [$SqlDatabaseName].[dbo].[Credentials] "+
