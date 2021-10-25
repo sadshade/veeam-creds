@@ -16,7 +16,7 @@ Python script to emulate vSphere responses to retrieve stored credentials from V
 **Usage**
 1. Run the script ./veeampot.py
 2. Start the  VMware vSphere Server Add Wizard from the Infrastructure section
-3. Enter the address and port (default 8080) of the host on which the script is running
+3. Enter the address and port (default 8443) of the host on which the script is running
 4. Select an account and connect (ignore the message about the invalid certificate)
 5. The script will print the credentials sent by Veeam
 
