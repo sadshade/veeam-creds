@@ -4,7 +4,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import ssl
 import re
 
-SERVER_PORT = 8080 # Listen port
+SERVER_PORT = 8443 # Listen port
 ReqNum = 1
 
 class RequestHandler(BaseHTTPRequestHandler):
