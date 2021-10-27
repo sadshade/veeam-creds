@@ -1,7 +1,7 @@
 name: Invoke-VeeamGetCreds
 
 authors:
-  - '@adshade'
+  - '@sadshade'
 
 description: A PowerShell script for getting and decrypting accounts directly from the Veeam's database.
 
