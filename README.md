@@ -1,7 +1,7 @@
 
 # Veeam Credential Recovery
 
-The repository contains two scripts for recovering passwords from the
+This repository contains scripts for recovering passwords from the
 Veeam Backup and Replication credential manager.
 
 ## Veeam-Get-Creds.ps1
@@ -9,6 +9,15 @@ A PowerShell script for getting and decrypting accounts directly from the Veeam'
 
 **Usage**
 1. Run as administrator (elevated) in PowerShell on a host in a Veeam server.
+
+## VeeamGetCreds.yaml
+PowerShell Empire module with adapted Veeam-Get-Creds.ps1 script.
+
+**Usage**
+1. copy VeeamGetCreds.yaml to empire/server/modules/powershell/credentials/ folder
+2. Run Empire server and client
+3. Use as usual Empire module by name /powershell/credentials/VeeamGetCreds
+
 
 ## veampot.py
 Python script to emulate vSphere responses to retrieve stored credentials from Veeam.
