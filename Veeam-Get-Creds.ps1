@@ -29,7 +29,7 @@ catch {
 $SQL = "SELECT [user_name] AS 'User name',[password] AS 'Password' FROM [$SqlDatabaseName].[dbo].[Credentials] "+
 	"WHERE password <> ''" #Filter empty passwords
 $auth = "Integrated Security=SSPI;" #Local user
-$connectionString = "Provider=sqloledb; Data Source=$SqlServerName\$SqlInstanceName; " +
+$connectionString = "Provider=MSOLEDBSQL; Data Source=$SqlServerName\$SqlInstanceName; " +
 "Initial Catalog=$SqlDatabaseName; $auth; "
 $connection = New-Object System.Data.OleDb.OleDbConnection $connectionString
 $command = New-Object System.Data.OleDb.OleDbCommand $SQL, $connection
