@@ -1,3 +1,7 @@
+This repository has been moved to the archive.
+
+Please use module [veeam](https://www.netexec.wiki/smb-protocol/obtaining-credentials/dump-veeam) from Netexec or  PowerShell code from [vendor](https://www.veeam.com/kb4349)  (thanks [@fsacer](https://github.com/fsacer))
+
 
 # Veeam Credential Recovery
 
